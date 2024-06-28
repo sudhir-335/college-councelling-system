@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <!-- <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- <link href="bootstrap.min.css" rel="stylesheet"> -->
+
+    <title>College List</title>
+    <style>
+        body {
+            border: 2px solid #000;
+            /* padding: 10px; */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #000;
+            padding: 10px;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background-color: #f0f0f0;
+        }
+
+        .card-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card h3 {
+            margin: 0;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            /* Background color */
+            padding: 10px 20px;
+            /* Padding for the navbar */
+            display: flex;
+            /* Make navbar items display in a row */
+            justify-content: space-between;
+            /* Distribute items evenly */
+            align-items: center;
+            /* Vertically center items */
+        }
+
+        /* Logo */
+        .logo a {
+            color: #fff;
+            /* Text color */
+            text-decoration: none;
+            /* Remove underline */
+            font-size: 24px;
+            /* Font size */
+            font-weight: bold;
+            /* Bold text */
+        }
+
+        /* Navbar links */
+        .nav-links {
+            list-style: none;
+            /* Remove default list styles */
+            margin: 0;
+            /* Remove default margin */
+            padding: 0;
+            /* Remove default padding */
+        }
+
+        .nav-links li {
+            display: inline;
+            /* Display list items horizontally */
+            margin-right: 20px;
+            /* Spacing between list items */
+        }
+
+        .nav-links li a {
+            color: #fff;
+            /* Text color */
+            text-decoration: none;
+            /* Remove underline */
+            font-size: 18px;
+            /* Font size */
+        }
+
+        /* Hover effect for links */
+        .nav-links li a:hover {
+            text-decoration: underline;
+            /* Underline on hover */
+        }
+
+        /* .image {
+            width:
+        } */
+    </style>
+
+</head>
+
+<body>
+
+    <nav class=" navbar ">
+        <div class="logo"><a href="#">CCMS</a></div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/cutoff">Cutoff</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- College cards -->
+    <div>
+
+    </div>
+    <div class="container">
+
+        <% for(let i=0; i < data.length; i++) { %>
+            <!-- add onclick on this div -->
+            <div class="card" onClick="navigateToCollege(`<%= data[i].institute_code %>`)">
+                <!-- <img class="image" src=<%=data[i].IMG_SOURCE_LINK %> alt="--" > -->
+                <h3>
+                    <%= data[i].institute_name %>
+                </h3>
+                <p>
+                    <%= data[i].state %>
+                </p>
+            </div>
+            <% } %>
+    </div>
+
+    <script>
+        const navigateToCollege = (collegeId) => {
+            console.log(collegeId);
+            // Construct the URL based on the collegeId
+            const url = `/college/${collegeId}`;
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        }
+
+    </script>
+</body>
+
+</html>
